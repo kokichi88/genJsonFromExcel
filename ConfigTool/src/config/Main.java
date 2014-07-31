@@ -171,25 +171,7 @@ public class Main {
 						// Get row key
 						String key = r.getCell(0).getStringCellValue();
 						Cell valueCell = r.getCell(1);
-						int valueType = valueCell.getCellType();
-						switch (valueType) {
-						case Cell.CELL_TYPE_NUMERIC:
-							sheetData.put(key, valueCell.getNumericCellValue());
-							break;
-						case Cell.CELL_TYPE_BOOLEAN:
-							sheetData.put(key, valueCell.getBooleanCellValue());
-							break;
-						case Cell.CELL_TYPE_STRING:
-						default:
-							String stringCellValue = valueCell.getStringCellValue();
-							if (stringCellValue.indexOf(SEPARATOR) > -1) {
-								List<Object> list = processStringData(stringCellValue);
-								sheetData.put(key, list);
-							} else {
-								sheetData.put(key, stringCellValue);
-							}
-							break;
-						}
+						sheetData.put(key, getCellValue(valueCell));
 					}
 					configData.put(sIdx, sheetData);
 				}
