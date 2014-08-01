@@ -385,7 +385,7 @@ public class Main {
 			if (stringCellValue.indexOf(SEPARATOR) > -1) {
 				return processStringData(stringCellValue);
 			} else {
-				return stringCellValue;
+				return stringCellValue.trim();
 			}
 		default:
 			return null;
@@ -415,6 +415,7 @@ public class Main {
 		List<Object> ret = new ArrayList<Object>();
 		if(isLong(arrValue[0])) {
 			for (String str : arrValue) {
+				str = str.trim();
 				if (!str.equals("")) {
 					ret.add(Long.parseLong(str));
 				}
@@ -422,6 +423,7 @@ public class Main {
 			return ret;
 		}else if(isDouble(arrValue[0])){
 			for (String str : arrValue) {
+				str = str.trim();
 				if (!str.equals("")) {
 					ret.add(Double.parseDouble(str));
 				}
@@ -429,6 +431,7 @@ public class Main {
 			return ret;
 		}else {
 			for (String str : arrValue) {
+				str = str.trim();
 				if (!str.equals("")) {
 					ret.add(str);
 				}
