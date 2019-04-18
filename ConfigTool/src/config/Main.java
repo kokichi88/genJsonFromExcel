@@ -259,11 +259,7 @@ public class Main {
 							for (int i = 0; i < idDepth; i++) {
 								Cell c = r.getCell(i);
 								String rIdx = null;
-								int type = c.getCellType();
-								if (type == Cell.CELL_TYPE_NUMERIC)
-									rIdx = String.valueOf((int) (c.getNumericCellValue()));
-								else if (type == Cell.CELL_TYPE_STRING)
-									rIdx = c.getStringCellValue();
+								rIdx = getCellValue(evaluator.evaluateInCell(c)).toString();
 								if (rIdx != null) {
 									idList[i] = rIdx;
 								}
